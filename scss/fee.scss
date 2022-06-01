@@ -1,0 +1,339 @@
+@import "main";
+
+
+/* wrapper
+-------------------------------------------------- */
+
+.wrapper {
+    width: 100%;
+    height: fit-content; 
+    position: relative; 
+    background-repeat: no-repeat; 
+    background-image: 
+        url('#{$imgUrl}/banner.svg'),
+        url('#{$imgUrl}/ball03.svg');
+    background-size: 
+        calc(100% / (1366 / 885)) auto,
+        calc(100% / (1366 / 361)) auto;
+    background-position: 
+        top right,
+        top 876px left -267px;
+
+    &::before {
+        content: '';
+        width: calc(100% - 8px);
+        height: 470px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: $blue;
+        border-radius: 0px 0px 0px 300px;
+        z-index: -10;
+    }
+
+    @include view-lg () {
+        background-position: 
+            top right,
+            top 1263px left -20px;
+    }
+
+    @include view-sm () {
+        background-image: 
+            url('#{$imgUrl}/banner_sm.svg'),
+            url('#{$imgUrl}/ball03.svg');
+        background-size: 
+            100% auto,
+            calc(100% / (375 / 204)) auto;
+        background-position: 
+            top 72px right,
+            top 1263px left -108px;
+        &::before {
+            width: 100%;
+            height: 567px;
+            border-radius: 0px 0px 0px 150px;
+        }
+    }
+}
+
+
+/* Header
+-------------------------------------------------- */
+
+header {
+    width: 100%; 
+    height: calc(470px - 96px); 
+    .banner {
+        @include flex (flex-start, center);
+        width: 100%; 
+        height: calc(470px - 192px);
+        .description {
+            font-size: $font-size-7;
+            line-height: $line-height-8;
+        }
+    }
+
+    @include view-sm () {
+        height: calc(567px - 120px);
+        margin-top: 48px; 
+        .banner {
+            height: fit-content;   
+        }
+    }
+}
+
+
+/* Plan
+-------------------------------------------------- */
+
+.plan {
+    @include flex (center, flex-start, wrap);
+    width: 100%;
+    .btn-set {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        margin-bottom: 48px;
+        .primary-btn {
+            button {
+                margin-right: 16px;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }    
+    }
+    .card-set {
+        @include flex (center);
+        .card {
+            width: 444px;
+            height: fit-content;
+            background-color: $white;
+            border-radius: 12px;
+            margin-right: 21px;
+            &:last-child {
+                margin-right: 0;
+            }
+            h4 {
+                border-bottom: 2px solid $lightGray;
+            }
+            .content {
+                @include flex (center, flex-start, wrap);
+                padding: 32px 24px;
+                .description {
+                    text-align: center;
+                }
+                .number-set {
+                    @include flex (space-between, center);
+                    width: 100%;
+                    margin: 32px 0;
+                    .number-block {
+                        width: 169px;
+                        height: fit-content;
+                        padding: 24px 20px;
+                        background-color: $lightenGray;
+                        border-radius: 12px;
+                        &:first-child {
+                            margin-right: 21px;
+                        }
+                        &:last-child {
+                            margin-left: 21px;
+                        }
+                        .title {
+                            font-size: $font-size-9;
+                            line-height: $line-height-10;
+                            text-align: center;
+                            margin-bottom: 8px;
+                        }
+                        .number {
+                            font-size: $font-size-2;
+                            line-height: $line-height-4;
+                            font-family: 'Comfortaa', cursive;
+                            text-align: center;
+                            sub {
+                                font-size: $font-size-9;
+                                line-height: $line-height-10;
+                                font-family: 'Noto Sans TC', sans-serif;
+                                bottom: 2px;
+                                left: 6px;
+                                font-weight: bold;
+                            }
+                        }
+                        .focus {
+                           color: $primary; 
+                        }
+                    }
+                }
+                .detail {
+                    width: 100%;
+                    margin-bottom: 32px;
+                    li {
+                        list-style-image: url('#{$imgUrl}/icon_check.svg');
+                        margin-bottom: 16px;
+                        padding-left: 6px;
+                        margin-left: 28px;
+                        line-height: $line-height-8;
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include view-md() {
+        .card-set {
+            @include flex (center,flex-start,wrap);
+            max-width: 800px;
+            .card {
+                margin-right: 0;
+                margin-bottom: 24px;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .btn-set {
+            margin-right: -16px; 
+        }
+    }
+
+    @include view-sm() {
+        h3 {
+            margin-bottom: 24px;
+        }
+        .card-set {
+            .card {
+                width: 335px;
+                .content {
+                    padding: 24px 16px;
+                    .number-set {
+                        .number-block {
+                            width: 139px;
+                            height: fit-content;
+                            padding: 16px 8px;
+                            &:first-child {
+                                margin-right: 6px;
+                            }
+                            &:last-child {
+                                margin-left: 6px;
+                            }
+                            .number {
+                                font-size: $font-size-3;
+                                line-height: $line-height-5;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .detail {
+            li {
+                font-size: $font-size-8;
+                line-height: $line-height-9;
+            }
+        }
+        .btn-set {
+            margin-bottom: 32px;
+            .primary-btn {
+                button {
+                    padding: 8px 16px;
+                    margin-right: 6px;
+                    font-size: $font-size-7;
+                    line-height: $line-height-8;
+                }
+            }    
+        }
+    }
+
+    @include view-extra-sm() {
+        .card-set {
+            width: 100%;
+            .card {
+                width: 100%;
+                .content {
+                    .number-set {
+                        .number-block {
+                            .number {
+                                font-size: $font-size-4;
+                                line-height: $line-height-5;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* Question
+-------------------------------------------------- */
+
+.question {
+    @include flex (center, flex-start, wrap);
+    margin-bottom: 100px;
+    .card {
+        background-color: $white;
+        width: 904px;
+        height: fit-content;
+        padding: 16px 32px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        .title {
+            @include flex (space-between, center);
+            button {
+                background-color: transparent;
+            }
+        }
+        .description {
+            color: $darkGray;
+            line-height: $line-height-5;
+            height: 0;
+            opacity: 0;
+            transition: 0.2s;
+        }
+    }
+    .active {
+        .title {
+            h5 {
+                color: $primary;
+                font-weight: bold;
+            }    
+        }
+        .description {
+            padding-top: 24px;
+            height: fit-content;
+            opacity: 1;
+            transition: 0.5s;
+        }
+    }
+
+    @include view-sm() {
+        margin-bottom: 60px;
+        h3 {
+            margin-bottom: 32px;
+        }
+        .card {
+            padding: 16px;
+            .title {
+                .question-btn {
+                    img {
+                        width: 16px;
+                        height: 16px;
+                    }
+                }
+            }
+        }
+        .active {
+            .description {
+                padding-top: 16px;
+            }
+        }
+    }
+}
+
+
